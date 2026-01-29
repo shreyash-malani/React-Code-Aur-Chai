@@ -9,10 +9,16 @@ function App() {
 
   const addValue = () => {
     console.log("Clicked",counter);
+    if(counter >= 20){
+      return
+    }
     setCounter(counter + 1)
   }
 
   const subtractValue = () => {
+    if(counter <= 0){
+      return
+    }
     setCounter(counter - 1)
   }
   return (

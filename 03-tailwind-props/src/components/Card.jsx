@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Card({username, btnText="visit me"})  // here they have done destructuring   
+function Card({username,btnText /*btnText="visit me"*/})  // here they have done destructuring   
 {
     console.log(username);
   return (
@@ -18,7 +18,7 @@ function Card({username, btnText="visit me"})  // here they have done destructur
       debitis?
     </p>
     <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-      {btnText } →
+      {btnText || "here me"} →
     </button>
   </div>
 </div>
