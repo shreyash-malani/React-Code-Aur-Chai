@@ -18,6 +18,7 @@ function Login() {
         <input
           type="text"
           className="border rounded px-3 py-1 text-black"
+          value = {username}
           
           onChange={(e) => setUsername(e.target.value)}
           placeholder="username"

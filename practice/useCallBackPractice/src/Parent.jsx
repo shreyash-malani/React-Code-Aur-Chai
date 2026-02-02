@@ -5,7 +5,7 @@ function Parent() {
   const [count, setCount] = useState(0);
 
   const handleClick = useCallback(() => {
-    console.log("Button Clicked");
+    console.log("Child Button Clicked");
   }, []);
 
   return (

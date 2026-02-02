@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 
 function App() {
-  const [length, setLength] = useState(8);
+  const [length, setLength] = useState(18);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
@@ -24,15 +24,27 @@ function App() {
     setPassword(pass);
   }, [length, numberAllowed, charAllowed]);
 
+  // const copyPasswordToClipboard = useCallback(() => {
+  //   passwordRef.current?.select();
+  //   passwordRef.current?.setSelectionRange(0, 999);
+  //   window.navigator.clipboard.writeText(password);
+  // }, [password]);
+
   const copyPasswordToClipboard = useCallback(() => {
-    passwordRef.current?.select();
-    passwordRef.current?.setSelectionRange(0, 999);
-    window.navigator.clipboard.writeText(password);
-  }, [password]);
+  const selectedText = passwordRef.current?.value.substring(
+    passwordRef.current.selectionStart,
+    passwordRef.current.selectionEnd
+  );
+
+  window.navigator.clipboard.writeText(
+    selectedText || password
+  );
+}, [password]);
+
 
   useEffect(() => {
     passwordGenerator();
-  }, [length, numberAllowed, charAllowed, passwordGenerator]);
+  }, [length, numberAllowed, charAllowed]);
 
   return (
     /* ===== FULL SCREEN WRAPPER (THIS WAS MISSING) ===== */
